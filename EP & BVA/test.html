@@ -1,0 +1,88 @@
+<!--
+    Integrantes:
+    Covarrubias Medina Alan Gerado
+    Lopez Sandoval Maria Paola
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <style>
+            table{
+                border-collapse: collapse; 
+            }
+
+            table, th, td, tr{
+                border: 1px black solid;
+            }
+
+            .error{
+                background: red;
+            }
+        </style>
+    </head>
+    <body>
+        <table>
+            <caption>EP</caption>
+            <thead>
+                    <tr>
+                        <th>Test data</th>
+                        <th>Expected result</th>
+                        <th>Actual result</th>
+                        <th>Past/Fail</th>
+                    </tr>
+            </thead>
+            <tbody id="contenidoEP">
+                
+
+            </tbody>
+        </table>
+
+        <table>
+                <caption>BVA</caption>
+                <thead>
+                        <tr>
+                            <th>Test data</th>
+                            <th>Expected result</th>
+                            <th>Actual result</th>
+                            <th>Past/Fail</th>
+                        </tr>
+                </thead>
+                <tbody id="contenidoBVA">
+                    
+    
+                </tbody>
+            </table>
+        
+
+<script src="function.js"></script>
+<script>
+        //EP
+        var calificaciones = [-3, 20, 62.2, 73, 92.5, 110];
+        var esperado = ["Error", "F", "C", "A", "A+", "Error"];
+        var resultado;
+        calificaciones.forEach(function(item, pos) {
+            if(calificacion(item) == "Error"){
+                resultado = "Fail"
+                document.getElementById("contenidoEP").innerHTML += "<tr><td class='error'>"+item+"</td><td class='error'>"+esperado[pos]+"</td><td class='error'>"+calificacion(item)+"</td><td class='error'>"+resultado+"</td></tr>";
+            } 
+            else{ resultado = "Pass"
+            document.getElementById("contenidoEP").innerHTML += "<tr><td>"+item+"</td><td>"+esperado[pos]+"</td><td>"+calificacion(item)+"</td><td>"+resultado+"</td></tr>";
+            }
+        });
+        //BVA
+        var calificaciones = [-1, 0, 50, 63, 73, 83, 100, 101];
+        var esperado = ["Erro", "F", "C", "B", "A", "A+", "A+", "Error"];
+        calificaciones.forEach(function(item, pos) {
+            if(calificacion(item) == "Error"){
+                resultado = "Fail"
+                document.getElementById("contenidoBVA").innerHTML += "<tr><td class='error'>"+item+"</td><td class='error'>"+esperado[pos]+"</td><td class='error'>"+calificacion(item)+"</td><td class='error'>"+resultado+"</td></tr>";
+            } 
+            else{ 
+            resultado = "Pass"
+            document.getElementById("contenidoBVA").innerHTML += "<tr><td>"+item+"</td><td>"+esperado[pos]+"</td><td>"+calificacion(item)+"</td><td>"+resultado+"</td></tr>";
+            }
+        });
+</script>
+</body>
+</html>
